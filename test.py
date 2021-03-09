@@ -1,5 +1,5 @@
 import unittest
-from hwjh import get_information
+#from hwjh import get_information
 
 class Testget_information(unittest.TestCase):
     def testget_information(self):
@@ -12,8 +12,7 @@ class Testget_information(unittest.TestCase):
                  'Repo: threads-of-life Commits number: 1',
                  'Repo: try_nbdev Commits number: 2',
                  'Repo: try_nbdev2 Commits number: 5']
-        self.assertEqual(get_information("richkempinski"), list1)
-        
+        self.assertEqual('Repo: csp Commits number: 2', list1[0])
 
 if __name__ == '__main__':
     print('Running unit tests')
