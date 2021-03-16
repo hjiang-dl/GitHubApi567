@@ -1,8 +1,12 @@
 import unittest
-#from hwjh import get_information
+import requests
+from unittest import mock
+import hwjh
+from hwjh import get_information
 
 class Testget_information(unittest.TestCase):
-    def testget_information(self):
+    @mock.path('hwjh.get_information')
+    def testget_information(self,mockedget):
         list1 = ['Repo: csp Commits number: 2', 
                  'Repo: hellogitworld Commits number: 30',
                  'Repo: helloworld Commits number: 6',
@@ -12,9 +16,9 @@ class Testget_information(unittest.TestCase):
                  'Repo: threads-of-life Commits number: 1',
                  'Repo: try_nbdev Commits number: 2',
                  'Repo: try_nbdev2 Commits number: 5']
-        self.assertEqual('Repo: csp Commits number: 2', list1[0])
+        mockedget.return_value = list1
+        self.assertEqual(hwjh.get_information("momotech"), list1[0])
 
 if __name__ == '__main__':
-    print('Running unit tests')
     unittest.main(exit=False, verbosity=2)
 
